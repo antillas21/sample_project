@@ -40,5 +40,10 @@
   </div>
   <div class="form-actions">
     <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+    <% if @email.draft? %>
+      <%= link_to 'Publish', publish_email_path(@email), method: :post, class: 'btn btn-success' %>
+    <% else %>
+      <%= link_to 'Unpublish', unpublish_email_path(@email), method: :post, class: 'btn btn-success' %>
+    <% end %>
   </div>
 <% end %>

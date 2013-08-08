@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :retrieve_email, only: [:edit, :update]
+  before_filter :retrieve_email, only: [:edit, :update, :publish, :unpublish]
 
   def index
     @emails = current_user.emails
@@ -14,6 +14,16 @@ class EmailsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def publish
+    @email.publish
+    redirect_to edit_email_path(@email), notice: 'This email has been published.'
+  end
+
+  def unpublish
+    @email.unpublish
+    redirect_to edit_email_path(@email), notice: 'This email has been unpublished.'
   end
 
   private

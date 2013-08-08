@@ -10,7 +10,12 @@ SampleProject::Application.routes.draw do
   get '/signup', to: 'registrations#new', as: 'signup'
   post '/signup', to: 'registrations#create', as: 'signup'
 
-  resources :emails
+  resources :emails do
+    member do
+      post :publish
+      post :unpublish
+    end
+  end
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
