@@ -15,6 +15,7 @@ feature 'User sign in' do
 
     page.should have_content 'You are now logged in.'
     page.current_url.should eq emails_url
+    page.should_not have_content 'Login'
   end
 
   scenario 'attempts to sign in with invalid email address => fail' do
