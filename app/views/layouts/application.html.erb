@@ -14,7 +14,7 @@
   </nav>
   <div id="messages">
     <% if flash.any? %>
-      <%= flash.each do |k, v| %>
+      <% flash.each do |k, v| %>
         <div class="flash <%= k %>"><%= v %></div>
       <% end %>
     <% end %>

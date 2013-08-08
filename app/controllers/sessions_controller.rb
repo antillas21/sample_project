@@ -5,7 +5,12 @@ class SessionsController < ApplicationController
 
   def create
     if env['warden'].authenticate( scope: :user)
-      redirect_to emails_path, notice: 'You are now logged in.'
+      flash[:notice] = 'You are now logged in.'
+      redirect_to emails_path
+    else
+      @user = User.new
+      flash[:error] = 'Invalid email or password.'
+      render :new
     end
   end
 end
