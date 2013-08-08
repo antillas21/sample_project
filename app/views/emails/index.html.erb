@@ -3,22 +3,23 @@
 <table class="table table-hover">
   <thead>
     <tr>
+      <th>Subject</th>
       <th>Sender</th>
       <th>Recipient</th>
-      <th>Subject</th>
+      <th>Published</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
     <% @emails.find_each do |email| %>
       <tr>
+        <td><%= email.subject %></td>
+        <td><%= email.from_email %></td>
+        <td><%= email.to_email %></td>
+        <td><%= email.published? %></td>
         <td>
-          <%= email.from_email %>
-        </td>
-        <td>
-          <%= email.to_email %>
-        </td>
-        <td>
-          <%= link_to email.subject, edit_email_path( email ) %>
+          <%= link_to 'Edit', edit_email_path(email), class: 'btn btn-link' %>
+          <%= link_to 'Publish', publish_email_path(email), method: :post, class: 'btn btn-link' %>
         </td>
       </tr>
     <% end %>
