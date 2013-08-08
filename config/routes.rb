@@ -1,6 +1,12 @@
 SampleProject::Application.routes.draw do
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
+
+  get '/login', to: 'sessions#new', as: 'login'
+  post '/login', to: 'sessions#create', as: 'sessions'
+
+  resources :emails
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

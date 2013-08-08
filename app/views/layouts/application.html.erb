@@ -7,6 +7,18 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <nav>
+    <ul>
+      <%= link_to 'Login', login_path %>
+    </ul>
+  </nav>
+  <div id="messages">
+    <% if flash.any? %>
+      <%= flash.each do |k, v| %>
+        <div class="flash <%= k %>"><%= v %></div>
+      <% end %>
+    <% end %>
+  </div>
 
 <%= yield %>
 
