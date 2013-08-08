@@ -1,0 +1,44 @@
+<h2>Edit Email</h2>
+
+<%= form_for @email do |f| %>
+  <%= f.error_messages %>
+  <div class="control-group">
+    <%= f.label :from_name, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :from_name %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :from_email, class: 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :from_email %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to_email, class: 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :to_email %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :subject, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :subject %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :text_body, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :text_body %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :html_body, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :html_body %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit 'Save changes', class: 'btn btn-primary' %>
+  </div>
+<% end %>

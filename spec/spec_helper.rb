@@ -36,4 +36,11 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+
+  config.include Warden::Test::Helpers, type: :controller
+  Warden.test_mode!
+
+  config.after :each do
+    Warden.test_reset!
+  end
 end

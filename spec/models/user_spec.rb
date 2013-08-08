@@ -7,6 +7,10 @@ describe User do
     it { should validate_uniqueness_of :email }
   end
 
+  describe 'relationships' do
+    it { should have_many :emails }
+  end
+
   describe 'has_secure_password' do
     let(:user) { User.new( name: 'John Doe', email: 'john@example.com' ) }
 

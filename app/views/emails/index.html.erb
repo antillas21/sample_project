@@ -1,1 +1,26 @@
 <h1>Emails</h1>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Sender</th>
+      <th>Recipient</th>
+      <th>Subject</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @emails.find_each do |email| %>
+      <tr>
+        <td>
+          <%= email.from_email %>
+        </td>
+        <td>
+          <%= email.to_email %>
+        </td>
+        <td>
+          <%= link_to email.subject, edit_email_path( email ) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
