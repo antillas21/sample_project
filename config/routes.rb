@@ -7,6 +7,9 @@ SampleProject::Application.routes.draw do
   post '/login', to: 'sessions#create', as: 'sessions'
   delete '/logout', to: 'sessions#destroy', as: 'logout'
 
+  get '/signup', to: 'registrations#new', as: 'signup'
+  post '/signup', to: 'registrations#create', as: 'signup'
+
   resources :emails
 
   # Sample of regular route:
