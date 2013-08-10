@@ -1,6 +1,6 @@
 <h2>Edit Email</h2>
 
-<%= form_for @email, html: { class: 'form-horizontal' } do |f| %>
+<%= form_for @email, remote: true, format: :json, html: { class: 'form-horizontal' } do |f| %>
   <%= f.error_messages %>
   <div class="control-group">
     <%= f.label :from_name, class: 'control-label' %>
@@ -43,7 +43,14 @@
     <% if @email.draft? %>
       <%= link_to 'Publish', publish_email_path(@email), method: :post, class: 'btn btn-success' %>
     <% else %>
-      <%= link_to 'Unpublish', unpublish_email_path(@email), method: :post, class: 'btn btn-success' %>
+      <%= link_to 'Unpublish', unpublish_email_path(@email), method: :post, class: 'btn btn-warning' %>
     <% end %>
   </div>
 <% end %>
+
+<%= javascript_tag do %>
+  $("input[type=text], input[type=email], textarea").blur(function() {
+    $(this).parents("form").submit();
+  });
+<% end %>
+

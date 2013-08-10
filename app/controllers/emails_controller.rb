@@ -1,16 +1,22 @@
 class EmailsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :retrieve_email, only: [:edit, :update, :publish, :unpublish]
+  before_filter :retrieve_email, only: [:show, :edit, :update, :publish, :unpublish]
+
+  respond_to :html, :json
 
   def index
     @emails = current_user.emails
+  end
+
+  def show
+    render nothing: true
   end
 
   def edit; end
 
   def update
     if @email.update_attributes email_params
-      redirect_to emails_path, notice: 'Your changes have been saved.'
+      redirect_to email_path(@email), notice: 'Your changes have been saved.'
     else
       render :edit
     end
